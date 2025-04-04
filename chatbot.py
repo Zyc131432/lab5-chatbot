@@ -10,18 +10,18 @@ global redis1
 
 def main():
     # Load your token and create an Updater for your Bot
-    config = configparser.ConfigParser()
-    config.read('config.ini')
+    #config = configparser.ConfigParser()
+    #config.read('config.ini')
     #updater = Updater(token=(config['TELEGRAM']['ACCESS_TOKEN']), use_context=True)
     updater = Updater(token=(os.environ['Telegram_ACCESS_TOKEN']), use_context=True)
     dispatcher = updater.dispatcher
 
     global redis1
-    redis1 = redis.Redis(host=(os.getenv('REDIS_HOST')),
-           password=(os.getenv('REDIS_PASSWORD')),
-            port=(os.getenv('REDIS_REDISPORT')),
-            decode_responses=(os.getenv('REDIS_DECODE')),
-           username=(os.getenv('REDIS_USER_NAME')))
+    redis1 = redis.Redis(host=(os.getenv("REDIS_HOST")),
+           password=(os.getenv("REDIS_PASSWORD")),
+            port=(os.getenv("REDIS_REDISPORT")),
+            decode_responses=(os.getenv("REDIS_DECODE")),
+           username=(os.getenv("REDIS_USER_NAME")))
     # You can set this logging module, so you will know when
     # and why things do not work as expected Meanwhile, update your config.ini as:
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
